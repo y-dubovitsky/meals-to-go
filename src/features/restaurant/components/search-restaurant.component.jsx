@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-const Search = () => {
+const SearchRestaurant = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Search;
+export default SearchRestaurant;
