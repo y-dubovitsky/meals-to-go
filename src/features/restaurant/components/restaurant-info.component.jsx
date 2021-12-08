@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
+import { Card } from 'react-native-paper';
 
 const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -17,10 +18,21 @@ const RestaurantInfo = ({ restaurant = {} }) => {
 
 
   return (
-    <View>
+    <Card style={styles.card}>
+      <Card.Cover style={styles.cover} source={{ uri: photos[0] }} />
       <Text>{name}</Text>
-    </View>
+    </Card>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: 'white'
+  },
+  cover: {
+    padding: 10,
+    backgroundColor: "white"
+  }
+})
 
 export default RestaurantInfo;
