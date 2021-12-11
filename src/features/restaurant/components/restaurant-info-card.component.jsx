@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Card } from 'react-native-paper';
 import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
@@ -37,7 +36,8 @@ const RestaurantAddress = styled.Text`
 `
 
 const RestaurantCard = styled(Card)`
-  backgroundColor: ${props => props.theme.colors.ui.tertiary}
+  backgroundColor: ${props => props.theme.colors.ui.tertiary};
+  marginBottom: ${props => props.theme.space[3]}
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
