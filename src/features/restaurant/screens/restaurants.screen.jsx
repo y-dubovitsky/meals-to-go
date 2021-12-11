@@ -4,22 +4,18 @@ import styled from 'styled-components';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
 import SearchRestaurant from '../components/search-restaurant.component';
 
-const calcSafeAreaPaddingTop = () => {
-  return Platform.OS === 'android' ? StatusBar.currentHeight + 'px' : 0
-}
-
 const SafeArea = styled.SafeAreaView`
     flex: 1;
-    paddingTop: ${calcSafeAreaPaddingTop()};
+    paddingTop: ${StatusBar.currentHeight && StatusBar.currentHeight + 'px'};
 `;
 
 const SearchContainer = styled.View`
-    padding: 16px;
+    padding: ${props => props.theme.space[2]};
 `;
 
 const RestaurantInfoContainer = styled.View`
-    backgroundColor: blue;
-    padding: 16px;
+    backgroundColor: ${props => props.theme.colors.bg.primary};
+    padding: ${props => props.theme.space[2]};
     flex: 1;
 `;
 
