@@ -13,7 +13,7 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import RestaurantsScreen from './src/features/restaurant/screens/restaurants.screen';
 import MapScreen from './src/features/map/screens/map.screen';
 import SettingsScreen from './src/features/settings/screens/settings.screen';
@@ -34,8 +34,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Restaurants',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
+            <Ionicons name="restaurant" size={size} color={color} />),
         }}
       />
       <Tab.Screen
@@ -44,8 +43,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Map',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="map" color={color} size={size} />
-          ),
+            <Ionicons name="map" size={size} color={color} />),
         }}
       />
       <Tab.Screen
@@ -54,8 +52,7 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
-          ),
+            <Ionicons name="settings" size={size} color={color} />),
         }}
       />
     </Tab.Navigator>
