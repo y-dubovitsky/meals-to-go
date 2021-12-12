@@ -9,7 +9,7 @@ export const restaurantsRequest = (locations = "37.7749295,-122.4194155") => {
   })
 };
 
-const restaurantDataTransform = (restaurant) => {
+export  const restaurantDataTransform = (restaurant) => {
   const result = {
     ...restaurant,
     isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
