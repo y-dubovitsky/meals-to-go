@@ -9,6 +9,17 @@ export const restaurantsRequest = (locations = "37.7749295,-122.4194155") => {
   })
 };
 
+const restaurantDataTransform = (restaurant) => {
+  const result = {
+    ...restaurant,
+    isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
+    isClosedTemporarily: restaurant.business_status === 'CLOSED_TEMPORARILY'
+  }
+  return camelize(result);
+}
+
 restaurantsRequest()
-  .then(result => console.log(camelize(result)))
+  .then(restaurants => {
+    console.log(restaurants.results.map(restaurant => restaurantDataTransform(restaurant)))
+  })
   .catch(error => console.error(error));
