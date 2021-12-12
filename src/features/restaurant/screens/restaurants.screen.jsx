@@ -24,7 +24,7 @@ const RestaurantsScreen = () => {
       <RestaurantList
         data={[{ name: 1 }, { name: 2 }, { name: 3 }]}
         renderItem={() => <RestaurantInfoCard />}
-        keyExtractor={item => item.name + Math.random() * 1000}
+        keyExtractor={item => item.name}
       >
       </RestaurantList>
     </SafeAreaComponent>
