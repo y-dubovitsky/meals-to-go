@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, createContext } from 'react';
-import { restaurantsRequest, restaurantDataTransform } from '../../services/restaurants/restaurants.service';
+import { restaurantsRequest, restaurantDataTransform } from './restaurants.service';
 
 export const RestaurantContext = createContext();
 

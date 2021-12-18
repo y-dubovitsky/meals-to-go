@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import SafeAreaComponent from '../../../components/utils/safe-area.component';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
 import SearchRestaurant from '../components/search-restaurant.component';
-import { RestaurantContext } from '../../../services/restaurants/restaurants.contex';
+import { RestaurantContext } from '../../../services/restaurants/restaurants.context';
+import Loader from '../../../components/utils/loader.component';
 
 const SearchContainer = styled.View`
     padding: ${props => props.theme.space[2]};
@@ -16,7 +17,7 @@ const RestaurantList = styled(FlatList).attrs({
   }
 })``;
 
-const Loader = styled.View`
+const LoaderContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -25,25 +26,25 @@ const Loader = styled.View`
 const RestaurantsScreen = () => {
   const { restaurants, isLoading, error } = useContext(RestaurantContext);
 
-  if (isLoading) {
-    return (
-      <Loader><Text>Loading</Text></Loader>
-    )
-  }
-
   return (
     <SafeAreaComponent>
       <SearchContainer>
         <SearchRestaurant />
       </SearchContainer>
-      <RestaurantList
-        data={restaurants}
-        renderItem={(item) => {
-          return <RestaurantInfoCard restaurant={item.item} />
-        }}
-        keyExtractor={item => item.name}
-      >
-      </RestaurantList>
+      {isLoading ?
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+        :
+        <RestaurantList
+          data={restaurants}
+          renderItem={(item) => {
+            return <RestaurantInfoCard restaurant={item.item} />
+          }}
+          keyExtractor={item => item.name}
+        >
+        </RestaurantList>
+      }
     </SafeAreaComponent>
   );
 }
