@@ -4,10 +4,37 @@ import { restaurantsRequest, restaurantDataTransform } from '../../services/rest
 export const RestaurantContext = createContext();
 
 export const RestaurantsContextProvider = (props) => {
+
+  const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchRestaurant = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      restaurantsRequest()
+        .then(restaurants => (
+          restaurants.results.map(restaurant => restaurantDataTransform(restaurant))
+        ))
+        .then((data) => {
+          setRestaurants(data);
+          setIsLoading(false);
+        })
+        .catch(error => setError(error));
+    }, 2000)
+  }
+
+  useEffect(() => {
+    fetchRestaurant();
+  }, []);
+
   return (
     <RestaurantContext.Provider
       value={{
-        restaurants: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        restaurants: restaurants,
+        isLoading,
+        error
       }}
     >
       {props.children}

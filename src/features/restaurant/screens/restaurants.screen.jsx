@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import styled from 'styled-components';
 import SafeAreaComponent from '../../../components/utils/safe-area.component';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
@@ -16,16 +16,31 @@ const RestaurantList = styled(FlatList).attrs({
   }
 })``;
 
+const Loader = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
 const RestaurantsScreen = () => {
-  const restaurantContext = useContext(RestaurantContext);
+  const { restaurants, isLoading, error } = useContext(RestaurantContext);
+
+  if (isLoading) {
+    return (
+      <Loader><Text>Loading</Text></Loader>
+    )
+  }
+
   return (
     <SafeAreaComponent>
       <SearchContainer>
         <SearchRestaurant />
       </SearchContainer>
       <RestaurantList
-        data={restaurantContext.restaurants}
-        renderItem={() => <RestaurantInfoCard />}
+        data={restaurants}
+        renderItem={(item) => {
+          return <RestaurantInfoCard restaurant={item.item} />
+        }}
         keyExtractor={item => item.name}
       >
       </RestaurantList>

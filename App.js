@@ -18,7 +18,6 @@ import RestaurantsScreen from './src/features/restaurant/screens/restaurants.scr
 import MapScreen from './src/features/map/screens/map.screen';
 import SettingsScreen from './src/features/settings/screens/settings.screen';
 import { RestaurantsContextProvider } from './src/services/restaurants/restaurants.contex';
-import { restaurantsRequest } from './src/services/restaurants/restaurants.service';
 
 const Tab = createBottomTabNavigator();
 
