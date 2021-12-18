@@ -1,15 +1,28 @@
-import locations from './mock/location.mock';
-import camelize from 'camelize';
+import { locations as loc } from './mock/location.mock';
 
-export const locationRequest = (city) => {
+export const fetchAllCityObjects = (locations = loc) => {
+  console.log(`execute fetchAllLocations(${locations})`)
   return new Promise((resolve, reject) => {
-    if (!locations.city) reject(`Location for ${city} not found!`);
-    resolve(locations.city);
+    if (!locations) reject("There is no locations!");
+    resolve(locations);
   })
 };
 
-export const locationTransform = (city) => {
-  const { geometry = {} } = camelize(city.results[0]);
-  const { lng = {}, lat = {} } = geometry.location;
-  return { lng, lat };
-}
+export const fetchCityObject = (city, locations = loc) => {
+  console.log(`execute fetchCityObject(${city}, ${locations})`)
+  return new Promise((resolve, reject) => {
+    if (!locations[city.toLowerCase()]) reject(`There is no ${city} location!`);
+    resolve(locations[city.toLowerCase()]);
+  })
+};
+
+/**
+ * Достает из объекта его локацию в виде "51.219448,4.402464"
+ */
+export const transformCityObjectToLatLng = (cityObject) => {
+  console.log(`execute transformCityObjectToLatLng(${cityObject})`);
+  const results = cityObject.results[0];
+  const geometry = results.geometry;
+  const { lat, lng } = geometry.location;
+  return `${lat},${lng}`;
+};

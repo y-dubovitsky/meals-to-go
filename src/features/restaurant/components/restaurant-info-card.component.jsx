@@ -61,7 +61,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   const calculateRestaurantRating = (rating) => {
     return Array(5).fill(null).map((u, i) => {
-      if (i < rating) return <SvgXml xml={Star} width="20" height="20" />
+      if (i < rating) return <SvgXml key={i} xml={Star} width="20" height="20" />
     })
   }
 
