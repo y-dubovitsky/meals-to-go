@@ -7,10 +7,6 @@ import SearchRestaurant from '../components/search-restaurant.component';
 import { RestaurantContext } from '../../../services/restaurants/restaurants.context';
 import Loader from '../../../components/utils/loader.component';
 
-const SearchContainer = styled.View`
-    padding: ${props => props.theme.space[2]};
-`;
-
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -28,9 +24,7 @@ const RestaurantsScreen = ({ navigation }) => {
 
   return (
     <SafeAreaComponent>
-      <SearchContainer>
-        <SearchRestaurant />
-      </SearchContainer>
+      <SearchRestaurant />
       {isLoading ?
         <LoaderContainer>
           <Loader />
