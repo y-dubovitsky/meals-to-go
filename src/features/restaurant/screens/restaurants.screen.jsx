@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FlatList, Pressable } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import SafeAreaComponent from '../../../components/utils/safe-area.component';
 import RestaurantInfoCard from '../components/restaurant-info-card.component';
@@ -39,9 +39,11 @@ const RestaurantsScreen = ({ navigation }) => {
         <RestaurantList
           data={restaurants}
           renderItem={(item) => (
-            <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RestaurantDetail")}
+            >
               <RestaurantInfoCard restaurant={item.item} />
-            </Pressable>
+            </TouchableOpacity>
           )}
           keyExtractor={item => item.name}
         >
