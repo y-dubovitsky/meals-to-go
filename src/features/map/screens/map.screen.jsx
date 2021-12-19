@@ -1,16 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import SafeAreaComponent from '../../../components/utils/safe-area.component';
-
-const Title = styled.Text`
-`;
+import MapView from 'react-native-maps';
 
 const MapScreen = () => {
   return (
     <SafeAreaComponent>
-      <Title>Map Screen</Title>
+      <MapView style={{height: "100%"}}/>
     </SafeAreaComponent>
   )
 };
 
 export default MapScreen;
+
