@@ -1,10 +1,9 @@
 import React from 'react';
 import { Card } from 'react-native-paper';
-import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
-import Star from '../../../../assets/star';
+import styled from 'styled-components/native';
 import isOpen from '../../../../assets/isOpen';
-import { Text } from 'react-native';
+import Star from '../../../../assets/star';
 
 const Title = styled.Text`
   font-family: ${props => props.theme.fonts.body};
