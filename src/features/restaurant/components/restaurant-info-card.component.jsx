@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
 import Star from '../../../../assets/star';
 import isOpen from '../../../../assets/isOpen';
+import { Text } from 'react-native';
 
 const Title = styled.Text`
   font-family: ${props => props.theme.fonts.body};
@@ -62,14 +63,14 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   const calculateRestaurantRating = (rating) => {
     return Array(5).fill(null).map((u, i) => {
-      if (i < rating) (
-        <SvgXml
+      if (i < rating) {
+        return <SvgXml
           key={i}
           xml={Star}
           width="20"
           height="20"
         />
-      )
+      }
     })
   }
 
