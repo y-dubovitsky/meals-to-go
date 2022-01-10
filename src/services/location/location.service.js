@@ -24,5 +24,5 @@ export const transformCityObjectToLatLng = (cityObject) => {
   const results = cityObject.results[0];
   const geometry = results.geometry;
   const { lat, lng } = geometry.location;
-  return `${lat},${lng}`;
+  return { lat, lng, viewport: geometry.viewport };
 };
