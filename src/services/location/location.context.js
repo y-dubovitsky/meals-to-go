@@ -23,7 +23,7 @@ export const LocationContextProvider = (props) => {
         setError(error);
         setIsLoading(false);
         console.log(`Oooops, ${error}. Set default city: Antwerp!`);
-        getCityObjectLatLng("Antwerp");
+        getCityObjectLatLng("antwerp");
       });
   }
 

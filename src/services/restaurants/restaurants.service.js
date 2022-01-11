@@ -1,11 +1,16 @@
 import { mocks, mockImages } from './mock';
 import camelize from 'camelize';
 
-export const restaurantsRequest = (locations) => {
-  console.log(`execute restaurantsRequest(${locations})`);
-  if(!locations) locations = "37.7749295,-122.4194155"; //! Checking
+export const findRestaurantsByCityLocation = ({lat, lng}) => {
+  console.log(`execute fetchRestaurantsByCityLocation(${lat}, ${lng})`);
+
+  if(!lat || !lng) { //! antwerp default coordinate
+    lat = 51.219448; 
+    lng = 4.402464
+  }
+
   return new Promise((resolve, reject) => {
-    const mock = mocks[locations];
+    const mock = mocks[`${lat},${lng}`]; //? Упростить
     if (!mock) reject('not found location!');
     resolve(mock);
   })

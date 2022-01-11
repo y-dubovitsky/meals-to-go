@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState, useContext } from 'react';
-import { restaurantDataTransform, restaurantsRequest } from './restaurants.service';
+import { restaurantDataTransform, findRestaurantsByCityLocation } from './restaurants.service';
 import { LocationContext } from '../location/location.context';
 
 export const RestaurantContext = createContext();
@@ -11,10 +11,12 @@ export const RestaurantsContextProvider = (props) => {
   const [error, setError] = useState(null);
   const { cityLocation } = useContext(LocationContext);
 
-  const fetchRestaurant = () => {
+  //!cityLocation - многосоставной объект!
+  const fetchRestaurantByCityLocation = (cityLocation) => {
+    console.log(`execute fetchRestaurant(${cityLocation})`);
     setIsLoading(true);
     setTimeout(() => {
-      restaurantsRequest(cityLocation)
+      findRestaurantsByCityLocation(cityLocation)
         .then(restaurants => (
           restaurants.results.map(restaurant => restaurantDataTransform(restaurant))
         ))
@@ -27,7 +29,7 @@ export const RestaurantsContextProvider = (props) => {
   }
 
   useEffect(() => {
-    fetchRestaurant();
+    fetchRestaurantByCityLocation(cityLocation);
   }, [cityLocation]);
 
   return (
